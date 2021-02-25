@@ -1,0 +1,16 @@
+{
+    "domain": "https://10.0.1.255",
+    "username": "exporter",
+    "password": "password12345",
+    "port": 9891,
+    "metrics": [
+        "alert_definitions",
+        "bbus",
+        "bricks",
+        "clusters",    
+        "ssds",
+        "volumes",
+        "xenvs",
+        "xms"
+    ]
+}
