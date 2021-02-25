@@ -26,19 +26,12 @@ To run the exporter, you must make a configuration file called 'config.json' loc
 ````
 
 | Variable  | Description
-|           
 |-----------|----------------------------------------------------------------------------------------------
-|
-| domain    | The base URL of the XtremIO management inferface
-|
+| domain    | The base URL of the XtremIO management inferface 
 | username  | The username of a user that will be used to access the API. Read only access is recommended
-|
 | password  | The password to the user that will be used to access the API
-|
 | port      | An integer indicating the port you want the metrics to be exposed on
-|
 | metrics   | An array of metric groupings to be collected. See below for possible metric group values.
-|
 
 ### Metric Groupings
 The API provides a lot of different endpoints that can be called to collect various information. A lot of this information doesn't pertain directly to monitoring, so only the endpoints that provide the most monitoring value have been fully implemented. The implemented metric groupings are listed below:
