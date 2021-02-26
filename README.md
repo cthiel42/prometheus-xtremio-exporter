@@ -1,3 +1,4 @@
+[![Docker Pulls](https://img.shields.io/docker/pulls/cthiel42/prometheus-xtremio-exporter.svg?maxAge=604800)][hub]
 # prometheus-xtremio-exporter
 
 This exporter collects performance and usage stats from a Dell EMC XtremIO cluster running XMS version 6.1.0 and above. This exporter utilizes the v3 API, which is not supported by previous versions of XMS, but support for v2 could be added with some effort. Because this application utilizes the API, it's performance is at the mercy of the API. It isn't recommended to run this exporter on the Dell EMC cluster itself, but rather to run it on a separate machine (preferably in close proximity for low latency). It's also recommended that you only collect metrics that truly matter in order to reduce the time a scrape takes to complete.
