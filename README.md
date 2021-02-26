@@ -4,7 +4,7 @@ This exporter collects performance and usage stats from a Dell EMC XtremIO clust
 
 ## Usage & Configuration
 ### Configuration
-To run the exporter, you must make a configuration file called 'config.json' located in the same directory as [xtremio.py](xtremio.py). An example of a configuration file can be found below or in [example_config](example_config.json).
+To run the exporter, you must make a configuration file called `config.json` located in the same directory as [xtremio.py](xtremio.py). An example of a configuration file can be found below or in [example_config](example_config.json).
 
 ````json
 {

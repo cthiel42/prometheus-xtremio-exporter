@@ -414,10 +414,33 @@ class Collector(object):
         print(name+": Done in "+str(time.time()-start)+" seconds")
         return [metric1]
 
+def load_config():
+    try:
+        configFile = open("config.json","r")
+        config = json.loads(configFile.read())
+        configFile.close()
+    except Exception as e:
+        raise Exception("Configuration file was unabled to be loaded: "+str(e))
+    
+    if "domain" not in config:
+        raise Exception("No domain specified in configuration file")
+    if "port" not in config:
+        config["port"] = 9891
+    if not isinstance(config["port"],int) or config["port"] < 0 or config["port"] > 65535:
+        raise Exception("Port must be an integer between 0 and 65535")
+    if "username" not in config:
+        raise Exception("Username is missing from configuration file")
+    if "password" not in config:
+        raise Exception("Password is missing from configuration file")
+    if "metrics" not in config:
+        config["metrics"] = ["alert_definitions","bbus","bricks","clusters","ssds","volumes","xenvs","xms"]
+    if not isinstance(config["metrics"],list):
+        raise Exception("Metrics field in configuration must be an array")
+
+    return config
+    
 def main():
-    configFile = open("config.json","r")
-    config = json.loads(configFile.read())
-    configFile.close()
+    config = load_config()
 
     start_http_server(config["port"])
 
@@ -426,5 +449,7 @@ def main():
     REGISTRY.register(Collector(config))
 
     print("Exporter Running")
+    while 1:
+        time.sleep(5)
 
 main()
