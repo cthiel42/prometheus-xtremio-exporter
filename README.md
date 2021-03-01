@@ -99,3 +99,22 @@ Once you have a config file made in the same directory as the exporter, you can 
 To verify that your exporter is running, open a browser and go to the port that you're running the exporter on (i.e. 9891) http://localhost:9891.
 
 A Docker image will be available in the future
+
+### Running the Exporter in Docker
+Pull the latest image from [Dockerhub](https://hub.docker.com/r/cthiel42/prometheus-xtremio-exporter)
+
+`docker pull cthiel42/prometheus-xtremio-exporter`
+
+Or on the converse you can build your own image with the following:
+
+`docker build -t prometheus-xtremio-exporter .`
+
+To run the image you need to mount the configuration file that you're using. Only edit the first part of the volume expression (where the config file is on your local machine) and leave the path for the configuration file in the container the same to avoid file not found errors. You then also need to open the port that you're exposing the exporter on in the configuration file (default is 9891).
+
+````
+docker run -d \
+    --name prometheus-xtremio-exporter \
+    -v /absolute/path/to/config.json:/opt/xtremio_exporter/config.json:ro \
+    -p 9891:9891 \
+    prometheus-xtremio-exporter
+````
